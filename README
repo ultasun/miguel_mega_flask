@@ -1,0 +1,5 @@
+Notes:
+	* Useful environment variables for `flask run`
+		* FLASK_RUN_HOST
+		* FLASK_RUN_PORT
+
