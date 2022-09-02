@@ -24,8 +24,16 @@ def index():
         db.session.commit()
         flash('Published your new post.')
         return redirect(url_for('index'))
-    posts = Post.query.all()
-    return render_template('index.html', title='Home', posts=posts, form=form)
+    #posts = Post.query.all() # show all blog posts on home page
+    posts = current_user.followed_posts().all() # or show only followed posts 
+    return render_template('index.html', title='Microblog Home', 
+                           posts=posts, form=form)
+
+@app.route('/explore')
+@login_required
+def explore():
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('index.html', title='Explore', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
