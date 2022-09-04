@@ -3,6 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_mail import Mail
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
@@ -13,6 +14,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+mail = Mail(app)
 
 # these logging features only work in production mode
 if not app.debug:
@@ -31,6 +33,9 @@ if not app.debug:
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
+#        mail = Mail(app)
+    else:
+        mail = None
     
     # set up file logging
     if not os.path.exists('logs'):
@@ -45,6 +50,8 @@ if not app.debug:
     # log server start-up
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+else:
+    mail = None # no mail server in debug mode...
 
 from app import routes, models, errors
 
