@@ -1,0 +1,24 @@
+# The following requirements were dictated by Miguel on his Flask Mega Tutorial.
+# However, some requirements had been disabled in this requirements.txt file,
+# because pip will not-so-easily install them automatically when running under
+# certain systems (in particular, Alpine Linux in a Docker container).
+# 
+# As noted in the README.md file, some of the pip packages should be installed 
+# using the [Alpine] distribution [testing] repository, in order to avoid 
+# installing GCC and an entire build environment.  Remember, the `PYTHONPATH`
+# may need to be updated before launching the python process to include the 
+# location of these libraries when installing outside of pip.  See README.md.
+#
+# Miguel's requirements for his Microblog application
+flask
+python-dotenv
+flask-wtf
+#flask-sqlalchemy
+#flask-migrate 
+flask-login
+email-validator
+flask-mail
+pyjwt
+flask-bootstrap
+flask-moment
+

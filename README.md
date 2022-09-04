@@ -1,15 +1,24 @@
 # Miguel's Mega Flask Tutorial
-See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).
+See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).  The goal of this repository is to provide notes for the maintainer of this repository, and, to provide Miguel's *Microblog* application as a *Docker* image (or at least, a working `Dockerfile`, available in this repository.)
+
+As of now, the maintainer of this repository had completed at least *Chapter 12*.
+
+# Installation
+There is a `requirements.txt` file, however, two of the requirements had been commented out (`flask-sqlalchemy` and `flask-migrate`), and were instead installed from the *Alpine* *Testing* repository.  This was done in order to avoid installing an entire build environment (*GCC*) since the intention is to *Dockerize* Miguel's application after the final chapter of his tutorial.
+
+**Please uncomment** `flask-sqlalchemy` and `flask-migrate` if the build environment is available to properly install these packages.  Else, read the section below titled *Important Notes (flask-sqlalchemy, flask-migrate)*, particularly for *Alpine Linux* in a *Docker* container.
 
 # Configuration
 This is the order of files which should be checked by *the user* for setting various configuration options:
 1. `.flaskenv` (check and set here **first**)
 2. `config.py` (check and set here **second**, because it uses values fed from `.flaskenv`)
 
-# Notes:
-* Useful environment variables for `flask run`
-	* FLASK_RUN_HOST
-	* FLASK_RUN_PORT
+The next two environment variables will likely need to be adjusted before running `flask run` in order to accept connections properly, especially if the application is running inside a *Docker* container:
+* FLASK_RUN_HOST
+* FLASK_RUN_PORT
+
+# Important Notes (flask-sqlalchemy, flask-migrate)
+The `requirements.txt` file will not install `flask-sqlaclhemy` and `
 * On Alpine in a Docker container:
 	* `pip install flask-sqlalchemy` will fail, so enable the Alpine *testing* repository to install:
 		* `apk add py3-flask-migrate`
