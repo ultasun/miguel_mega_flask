@@ -1,7 +1,7 @@
 # Miguel's Mega Flask Tutorial
 See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).  The goal of this repository is to provide notes for the maintainer of this repository, and, to provide Miguel's *Microblog* application as a *Docker* image (or at least, a working `Dockerfile`, available in this repository.)
 
-As of now, the maintainer of this repository had completed at least *Chapter 12*.
+As of now, the maintainer of this repository had completed at least *Chapter 13*.
 
 # Installation
 There is a `requirements.txt` file, however, two of the requirements had been commented out (`flask-sqlalchemy` and `flask-migrate`), and were instead installed from the *Alpine* *Testing* repository.  This was done in order to avoid installing an entire build environment (*GCC*) since the intention is to *Dockerize* Miguel's application after the final chapter of his tutorial.
