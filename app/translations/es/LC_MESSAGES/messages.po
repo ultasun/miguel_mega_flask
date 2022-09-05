@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.1.3.6.9\n"
 "Report-Msgid-Bugs-To: ultasun@gmail.com\n"
-"POT-Creation-Date: 2022-09-05 01:30+0000\n"
+"POT-Creation-Date: 2022-09-05 15:29+0000\n"
 "PO-Revision-Date: 2022-09-05 00:20+0000\n"
 "Last-Translator: Ulta Sun <ultasun@gmail.com>\n"
 "Language: es\n"
@@ -38,7 +38,7 @@ msgstr "Contraseña"
 msgid "Remember Me"
 msgstr "Recordarme"
 
-#: app/forms.py:13 app/routes.py:74 app/templates/login.html:5
+#: app/forms.py:13 app/routes.py:80 app/templates/login.html:5
 msgid "Sign In"
 msgstr "Ingresar"
 
@@ -50,7 +50,7 @@ msgstr "Email"
 msgid "Repeat Password"
 msgstr "Repitir Contraseña"
 
-#: app/forms.py:21 app/routes.py:93 app/templates/register.html:4
+#: app/forms.py:21 app/routes.py:99 app/templates/register.html:4
 msgid "Register"
 msgstr "Registrarse"
 
@@ -86,68 +86,72 @@ msgstr "Uno mas tiempo"
 msgid "Submit Password Reset"
 msgstr "Enviar para una nueva contraseña"
 
-#: app/routes.py:29
+#: app/routes.py:35
 msgid "Published your new post."
 msgstr "Publicó su nueva publicación."
 
-#: app/routes.py:41
+#: app/routes.py:47
 msgid "Microblog Home"
 msgstr "Microblog Inicio"
 
-#: app/routes.py:56 app/templates/base.html:36
+#: app/routes.py:62 app/templates/base.html:50
 msgid "Explore"
 msgstr "Explorar"
 
-#: app/routes.py:67
+#: app/routes.py:73
 msgid "Invalid username or password"
 msgstr "Nombre de usario o contraseña inválidos"
 
-#: app/routes.py:91
+#: app/routes.py:97
 msgid "Welcome to the system!"
 msgstr "¡Bienvenido al sistema!"
 
-#: app/routes.py:119
+#: app/routes.py:125
 msgid "Your changes have been recorded."
 msgstr "Sus cambios han sido registrados."
 
-#: app/routes.py:124 app/templates/edit_profile.html:5
+#: app/routes.py:130 app/templates/edit_profile.html:5
 msgid "Edit Profile"
 msgstr "Editar perfil."
 
-#: app/routes.py:134 app/routes.py:153
+#: app/routes.py:140 app/routes.py:159
 #, python-format
 msgid "User %(u)s not found."
 msgstr "Usuario %(u)s no encontrado."
 
-#: app/routes.py:137
+#: app/routes.py:143
 msgid "You cannot follow yourself!"
 msgstr "No puedes seguirte a ti mismo."
 
-#: app/routes.py:141
+#: app/routes.py:147
 #, python-format
 msgid "You are following %(u)s!"
 msgstr "Estás siguiendo a %(u)s!\""
 
-#: app/routes.py:156
+#: app/routes.py:162
 msgid "You cannot unfollow yourself!"
 msgstr "No puedes dejar de seguirte a ti mismo."
 
-#: app/routes.py:160
+#: app/routes.py:166
 #, python-format
 msgid "You are not following %(u)s."
 msgstr "No estás siguiendo a %(u)s."
 
-#: app/routes.py:174
+#: app/routes.py:180
 msgid "Check your email for the instructions to reset your password"
 msgstr "Recibirá un correo electrónico indicándole cómo restablecer su contraseña."
 
-#: app/routes.py:177 app/templates/reset_password_request.html:5
+#: app/routes.py:183 app/templates/reset_password_request.html:5
 msgid "Reset Password"
 msgstr "Nueva Contraseña"
 
-#: app/routes.py:190
+#: app/routes.py:196
 msgid "Your password has been reset."
 msgstr "Tu contraseña ha sido cambiada."
+
+#: app/translate.py:21 app/translate.py:49
+msgid "Error: failed to contact the external translation service."
+msgstr "Error: no contactar con el servicio de traducción externa."
 
 #: app/templates/500.html:4
 msgid "An unexpected error has occured"
@@ -166,27 +170,39 @@ msgstr "Atrás"
 msgid "%(username)s says %(when)s"
 msgstr "%(username)s dijo %(when)s"
 
-#: app/templates/base.html:13
+#: app/templates/_post.html:25
+msgid "Translate"
+msgstr "Traducir"
+
+#: app/templates/base.html:9
+msgid "Loading translation..."
+msgstr "Cargando traducción..."
+
+#: app/templates/base.html:17
+msgid "Error: no connection to server."
+msgstr "Error: no hay conexión al servidor."
+
+#: app/templates/base.html:27
 msgid "Welcome to Microblog."
 msgstr "Bienvenido a Microblog."
 
-#: app/templates/base.html:25
+#: app/templates/base.html:39
 msgid "Toggle navigation"
 msgstr "Navegación de palanca."
 
-#: app/templates/base.html:35
+#: app/templates/base.html:49
 msgid "Home"
 msgstr "Inicio"
 
-#: app/templates/base.html:40
+#: app/templates/base.html:54
 msgid "Login"
 msgstr "Inresar"
 
-#: app/templates/base.html:43
+#: app/templates/base.html:57
 msgid "Profile"
 msgstr "Perfil"
 
-#: app/templates/base.html:44
+#: app/templates/base.html:58
 msgid "Logout"
 msgstr "Salir"
 

@@ -11,11 +11,16 @@ There is a `requirements.txt` file, however, two of the requirements had been co
 # Configuration
 This is the order of files which should be checked by *the user* for setting various configuration options:
 1. `.flaskenv` (check and set here **first**)
-2. `config.py` (check and set here **second**, because it uses values fed from `.flaskenv`)
+2. Shell environment variables (run `export` in the shell to see them)
+	- Ideally set sensitive values here (*SMTP* passwords, *API* keys, etc.)
+3. `config.py` (check and set here **third**, because it uses values fed from `.flaskenv`, but `.flaskenv` will overwrite environment variables inherited from the shell).
+	- Some options (such as `POSTS_PER_PAGE`) are only set by `config.py`.
 
 The next two environment variables will likely need to be adjusted before running `flask run` in order to accept connections properly, especially if the application is running inside a *Docker* container:
 * FLASK_RUN_HOST
 * FLASK_RUN_PORT
+
+The *LibreTranslate* mirror may need to be updated, since these are ran on an ad-hoc basis.  See the [mirror list](https://github.com/LibreTranslate/LibreTranslate#mirrors) and update the `LIBRETRANSLATE_MIRROR` value in `.flaskenv` to an appropriate value.  In addition, if selecting to use the official mirror, an API key is required, and this key must be set under `LIBRETRANSLATE_API_KEY`.
 
 # Important Notes (flask-sqlalchemy, flask-migrate)
 The `requirements.txt` file will not install `flask-sqlaclhemy` and `
@@ -75,8 +80,15 @@ After adding or updating `_l()` or `_()` (user-displayed) statements, execute th
 
 For troubleshooting, see [Chapter 13](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiii-i18n-and-l10n) of Miguel's tutorial.
 
+# Automatic translation of user content
+Miguel's tutorial is a little dated (it's from 2017), and it has the reader use the translation service from either *Google* or *Microsoft* during [Chapter 14](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax).  
+
+A free alternative [*LibreTranslate*](https://libretranslate.com/) is available.  The `app/translate.py` was added on a separate commit to help readers differentiate between Miguel's original work, and the effort shown here to utilize *LibreTranslate*.  See `app/translate.py` for this original effort.
+
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found.  The `LICENSE` file included in this repository is an exact copy of the one [Miguel had distributed here](https://raw.githubusercontent.com/miguelgrinberg/microblog/v0.13/LICENSE).
+
+The effort put forward in `app/translate.py` is original, since Miguel did not cover how to utilize the *LibreTranslate* service.
 
 Thank you for reading, and thank you Miguel for creating the [fine tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
 
