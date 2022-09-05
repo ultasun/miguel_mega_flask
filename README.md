@@ -76,6 +76,8 @@ After adding or updating `_l()` or `_()` (user-displayed) statements, execute th
 For troubleshooting, see [Chapter 13](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiii-i18n-and-l10n) of Miguel's tutorial.
 
 # Credits
-Again, this is Miguel's Mega Flask Tutorial.  Some variation between his original demonstrations and my following-along will be found.  There is no `LICENSE` for this repository -- ask Miguel.
+Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found.  The `LICENSE` file included in this repository is an exact copy of the one [Miguel had distributed here](https://raw.githubusercontent.com/miguelgrinberg/microblog/v0.13/LICENSE).
+
+Thank you for reading, and thank you Miguel for creating the [fine tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
 
 
