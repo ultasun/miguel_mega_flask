@@ -1,7 +1,6 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-
 class Config(object):
     # CSRF protection key
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'good-luck-guessing-it'
@@ -22,6 +21,6 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['your-email@example.com']
 
-
-
+    # automatic language feature options
+    LANGUAGES = ['en', 'es']
 

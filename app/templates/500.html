@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>An unexpected error has occured</h1>
-    <p>A log of this error is available to the site administrator.</p>
-    <p><a href="{{ url_for('index') }}">Back</a></p>
+    <h1>{{ _('An unexpected error has occured') }}</h1>
+    <p>
+        {{ _('A log of this error is available to the site administrator.') }}
+    </p>
+    <p><a href="{{ url_for('index') }}">{{ _('Back') }}</a></p>
 {% endblock %}
 

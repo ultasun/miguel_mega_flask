@@ -52,6 +52,29 @@ The original code on Miguel's blog will result in a confusing `smtplib.SMTPServe
 
 Hopefully, from a learning perspective, this increases system (and stack trace) clarity, since the `smtplib.SMTPServerDisconnected` exception could be thrown for reasons beyond the environment when the *python* process was started.  
 
+# Language Support
+
+Miguel's Microblog supports multiple languages.  The source code is written in *English*, and translations for *Spanish* have been prepared.
+
+Part of Miguel's tutorial is adding sub-commands to the `flask` command, 
+
+### Adding a new language
+To add a new language:
+1. `flask translate init <LANGUAGE-CODE>`
+2. Get a translator, and update the new file with *poedit* or any text editor:
+- `app/translations/<LANGUAGE-CODE>/LC_MESSAGES/messages.po`
+3. `flask translate compile`
+4. `flask run` (this will start the server.)
+
+### Updating user-displayed statements
+After adding or updating `_l()` or `_()` (user-displayed) statements, execute the following or else the text will not update when accessing the site:
+1. `flask translate update`
+2. Adjust each `messages.po` file for each language to include/update the translation(s) for each user-displayed statement.
+3. `flask translate compile`
+4. `flask run` (this will start the server.)
+
+For troubleshooting, see [Chapter 13](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiii-i18n-and-l10n) of Miguel's tutorial.
+
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between his original demonstrations and my following-along will be found.  There is no `LICENSE` for this repository -- ask Miguel.
 
