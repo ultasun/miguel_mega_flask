@@ -58,7 +58,6 @@ The original code on Miguel's blog will result in a confusing `smtplib.SMTPServe
 Hopefully, from a learning perspective, this increases system (and stack trace) clarity, since the `smtplib.SMTPServerDisconnected` exception could be thrown for reasons beyond the environment when the *python* process was started.  
 
 # Language Support
-
 Miguel's Microblog supports multiple languages.  The source code is written in *English*, and translations for *Spanish* have been prepared. 
 
 Part of Miguel's tutorial is adding sub-commands to the `flask` command, 
@@ -83,12 +82,12 @@ For troubleshooting, see [Chapter 13](https://blog.miguelgrinberg.com/post/the-f
 # Automatic translation of user content
 Miguel's tutorial is a little dated (it's from 2017), and it has the reader use the translation service from either *Google* or *Microsoft* during [Chapter 14](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax).  
 
-A free alternative [*LibreTranslate*](https://libretranslate.com/) is available.  The `app/translate.py` was added on a separate commit to help readers differentiate between Miguel's original work, and the effort shown here to utilize *LibreTranslate*.  See `app/translate.py` for this original effort.
+A free alternative [*LibreTranslate*](https://libretranslate.com/) is available.  The [`app/translate.py`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/translate.py) was [added on a separate commit](https://github.com/ultasun/miguel_mega_flask/commit/84f92299301743c7f827cdbd221a3e5f2c8a24ff) to help readers differentiate between Miguel's original work, and the effort shown here to utilize *LibreTranslate*.  See `app/translate.py` for this original effort.
 
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found.  The `LICENSE` file included in this repository is an exact copy of the one [Miguel had distributed here](https://raw.githubusercontent.com/miguelgrinberg/microblog/v0.13/LICENSE).
 
-The effort put forward in `app/translate.py` is original, since Miguel did not cover how to utilize the *LibreTranslate* service.
+The effort found in [`app/translate.py`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/translate.py) is original, since Miguel did not cover how to utilize the *LibreTranslate* service.
 
 Thank you for reading, and thank you Miguel for creating the [fine tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
 
