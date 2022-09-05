@@ -54,7 +54,7 @@ Hopefully, from a learning perspective, this increases system (and stack trace) 
 
 # Language Support
 
-Miguel's Microblog supports multiple languages.  The source code is written in *English*, and translations for *Spanish* have been prepared.
+Miguel's Microblog supports multiple languages.  The source code is written in *English*, and translations for *Spanish* have been prepared. 
 
 Part of Miguel's tutorial is adding sub-commands to the `flask` command, 
 
@@ -67,7 +67,7 @@ To add a new language:
 4. `flask run` (this will start the server.)
 
 ### Updating user-displayed statements
-After adding or updating `_l()` or `_()` (user-displayed) statements, execute the following or else the text will not update when accessing the site:
+After adding or updating `_l()` or `_()` (user-displayed) statements, execute the following, or else, the (secondary language) text will not update when accessing the site:
 1. `flask translate update`
 2. Adjust each `messages.po` file for each language to include/update the translation(s) for each user-displayed statement.
 3. `flask translate compile`
