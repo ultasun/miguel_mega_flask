@@ -24,3 +24,9 @@ class Config(object):
     # automatic language feature options
     LANGUAGES = ['en', 'es']
 
+    # LibreTranslate options
+    # https://github.com/LibreTranslate/LibreTranslate#mirrors
+    LIBRETRANSLATE_MIRROR = os.environ.get('LIBRETRANSLATE_MIRROR')
+    # Not all LibreTranslate mirrors require an API key
+    LIBRETRANSLATE_API_KEY = os.environ.get('LIBRETRANSLATE_API_KEY')
+
