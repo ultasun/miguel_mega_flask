@@ -35,7 +35,7 @@ As a quick reminder, these two values are set in `.flaskenv`:
 
 The *LibreTranslate* mirror may need to be updated, since these are ran on an ad-hoc basis.  See the [mirror list](https://github.com/LibreTranslate/LibreTranslate#mirrors) and update the `LIBRETRANSLATE_MIRROR` value in `.flaskenv` to an appropriate value.  In addition, if selecting to use the official mirror, an API key is required, and this key must be set under `LIBRETRANSLATE_API_KEY`.
 
-# Important Notes flask-sqlalchemy & flask-migrate on Alpine Linux
+# Important Notes regarding *flask-sqlalchemy* & *flask-migrate* on *Alpine Linux*
 The `requirements.txt` file will not install `flask-sqlaclhemy` and `flask-migrate`, because `pip` will attempt to use `gcc` to begin building things, which is undesirable when using *Alpine Linux* in a *Docker* container.  The point of using *Alpine Linux* in a *Docker* container is to minimize image size, and installing a build environment will thwart that goal.
 
 If using *Alpine Linux* in a *Docker* container:
