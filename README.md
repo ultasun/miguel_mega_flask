@@ -18,6 +18,14 @@ Setting up an *Elasticsearch* node will be necessary for proper site functionali
 
 Compiling all of the language translations for system messages and content will be necessary, and should be done as a final step before running the application server.
 
+`flask translate compile`
+
+Another final step is to instantiate the database tables.
+
+`flask db upgrade`
+
+Please read the next section titled *Configuration* before attempting to start the server.
+
 # Configuration
 This is the order of files which should be checked by *the user* for setting various configuration options:
 1. `.flaskenv` (check and set here **first**)
@@ -117,6 +125,22 @@ Run the following *Docker* command for an unsecured *Elasticsearch* instance:
 
 ### Disabling Elasticsearch
 For unit testing and development purposes, it may be appropriate to disable *Elasticsearch*.  In order to do this, disable one of the environment variables in the `.env` file.  If `config.py` detects that any of the three related environment variables are disabled (`None`) then *Microblog* will disable *Elasticsearch*.
+
+# Starting the server 
+There are two ways to start the server.
+
+### Development mode
+Start the server with:
+`flask run`
+
+### Production mode
+1. Start the server using *gunicorn*:
+- `gunicorn -b localhost:3333 -w 3 microblog:app`
+2. Read the section titled *Setting Up Nginx* [in Chapter 17](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux)
+- It appears Miguel uses *Nginx* as a proxy to support *HTTPS*.
+- Another reason for using *Nginx* is to "*serve static files directly, and forward any requests intended for the application to the internal [gunicorn] server.*"
+
+**Note** Chapter 17 also covers how to use *MySQL* instead of *SQLite*, which is important because *SQLite* will lock the entire database during writes.
 
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found -- in particular the exact usability of environment variables defined in `.env` (and `.env.example`). 
