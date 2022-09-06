@@ -3,6 +3,10 @@ See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-fla
 
 As of now, the maintainer of this repository had completed at least *Chapter 13*.
 
+The strategy used here does not use *venv* or any other *Python* virtualization environment system, because *Docker* containerization is used instead.  Setting up *venv* inside of a *Docker* container seems like fixing the same problem twice, and would otherwise complicate the setup needlessly.
+
+Thanks to *Docker*, this document will not cover the traditional strategy of using *venv* or any other *Python* virtualization environment solution.
+
 # Installation
 There is a hand-writen `requirements.txt` file, however, two of the requirements had been commented out (`flask-sqlalchemy` and `flask-migrate`), and were instead installed from the *Alpine* *Testing* repository.  This was done in order to avoid installing an entire build environment (*GCC*) since the intention is to *Dockerize* Miguel's application after the final chapter of his tutorial.
 
@@ -31,14 +35,19 @@ As a quick reminder, these two values are set in `.flaskenv`:
 
 The *LibreTranslate* mirror may need to be updated, since these are ran on an ad-hoc basis.  See the [mirror list](https://github.com/LibreTranslate/LibreTranslate#mirrors) and update the `LIBRETRANSLATE_MIRROR` value in `.flaskenv` to an appropriate value.  In addition, if selecting to use the official mirror, an API key is required, and this key must be set under `LIBRETRANSLATE_API_KEY`.
 
-# Important Notes (flask-sqlalchemy, flask-migrate)
-The `requirements.txt` file will not install `flask-sqlaclhemy` and `flask-migrate`
-- On Alpine in a Docker container:
+# Important Notes flask-sqlalchemy & flask-migrate on Alpine Linux
+The `requirements.txt` file will not install `flask-sqlaclhemy` and `flask-migrate`, because `pip` will attempt to use `gcc` to begin building things, which is undesirable when using *Alpine Linux* in a *Docker* container.  The point of using *Alpine Linux* in a *Docker* container is to minimize image size, and installing a build environment will thwart that goal.
+
+If using *Alpine Linux* in a *Docker* container:
 	- `pip install flask-sqlalchemy` will fail, so enable the Alpine *testing* repository to install:
 		- `apk add py3-flask-migrate`
 		- `apk add py3-flask-sqlalchemy`
 	- Connect to the container with an updated `PYTHONPATH` environment variable:
 		- `docker exec -e PYTHONPATH="/usr/lib/python3.10/site-packages" -it MyContainerNameOrId /bin/sh`
+	- Install the remaining *Microblog* requirements:
+		- `pip install -r requirements.txt`
+
+**Note** There seems to be no point in using *venv* or any other virtual environment system for *Python* because, this is already running in a *Docker* container.
 
 # Logging via Emails
 Chapter 7 is about logging.  The microblog system developed in this series has the ability to email certain logs after certain error conditions occur.  
