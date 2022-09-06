@@ -137,10 +137,25 @@ Start the server with:
 1. Start the server using *gunicorn*:
 - `gunicorn -b localhost:3333 -w 3 microblog:app`
 2. Read the section titled *Setting Up Nginx* [in Chapter 17](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux)
+- Miguel shows an example `/etc/nginx/sites-enabled/` file
+	- He deletes `/etc/nginx/sites-enabled/default`
+	- He provides `/etc/nginx/sites-enabled/microblog`
 - It appears Miguel uses *Nginx* as a proxy to support *HTTPS*.
 - Another reason for using *Nginx* is to "*serve static files directly, and forward any requests intended for the application to the internal [gunicorn] server.*"
+3. A way to automatically start and restart the *gunicorn* server during system reboots and crashes needs to be put in place, Miguel uses *Supervisor*.  See his Chapter 17 for more details.
 
-**Note** Chapter 17 also covers how to use *MySQL* instead of *SQLite*, which is important because *SQLite* will lock the entire database during writes.
+#### MySQL
+Chapter 17 also covers how to use *MySQL* instead of *SQLite*, which is important because *SQLite* will lock the entire database during writes.  
+
+*MySQL* requires a database to be made, 
+`CREATE DATABASE microblog CHARACTER SET utf8 COLLATE utf8_bin;`
+along with a user,
+`CREATE USER 'microblog'@'localhost' IDENTIFIED BY 'some-password';
+and their privileges to be set,
+`GRANT ALL PRIVILEGES ON microblog.\* TO 'microblog'@'localhost';`
+and flushed
+`FLUSH PRIVILEGES;`
+Then, `flask db upgrade` will be able to create the tables.
 
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found -- in particular the exact usability of environment variables defined in `.env` (and `.env.example`). 
