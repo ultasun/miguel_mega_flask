@@ -16,6 +16,8 @@ Please read the *Configuration* section regarding the mandatory `.env` file.  Fa
 
 Setting up an *Elasticsearch* node will be necessary for proper site functionality, please read the *Elasticsearch* section below.
 
+Compiling all of the language translations for system messages and content will be necessary, and should be done as a final step before running the application server.
+
 # Configuration
 This is the order of files which should be checked by *the user* for setting various configuration options:
 1. `.flaskenv` (check and set here **first**)
@@ -64,7 +66,12 @@ Else, if using a real *SMTP* server, then check `.env.example`.  **Warning** The
 # Language Support
 Miguel's Microblog supports multiple languages.  The source code is written in *English*, and translations for *Spanish* have been prepared. 
 
-Part of Miguel's tutorial is adding sub-commands to the `flask` command, 
+Part of Miguel's tutorial is adding sub-commands to the `flask` command, they can be found in `app/cli.py`.
+
+### After Installation
+After checking out this repository, and after installing all `pip` dependencies, a final step before launching the application server for the first time, is:
+
+`flask translate compile`
 
 ### Adding a new system language
 This procedure is only necessary to have the system pages generate system messages in a language other than *English*.  That is, this has nothing to do with which languages users may compose their posts in.
