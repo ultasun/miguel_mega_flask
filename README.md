@@ -26,8 +26,8 @@ This is the order of files which should be checked by *the user* for setting var
 	- There should be no need to check or set this file, unless a finer grain of control is needed.
 
 As a quick reminder, these two values are set in `.flaskenv`:
-- FLASK_RUN_HOST
-- FLASK_RUN_PORT
+- `FLASK_RUN_HOST`
+- `FLASK_RUN_PORT`
 
 The *LibreTranslate* mirror may need to be updated, since these are ran on an ad-hoc basis.  See the [mirror list](https://github.com/LibreTranslate/LibreTranslate#mirrors) and update the `LIBRETRANSLATE_MIRROR` value in `.flaskenv` to an appropriate value.  In addition, if selecting to use the official mirror, an API key is required, and this key must be set under `LIBRETRANSLATE_API_KEY`.
 
@@ -86,11 +86,13 @@ Miguel's tutorial is a little dated (it's from 2017), and it has the reader use 
 A free alternative [*LibreTranslate*](https://libretranslate.com/) is available.  The [`app/translate.py`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/translate.py) was [added on a separate commit](https://github.com/ultasun/miguel_mega_flask/commit/84f92299301743c7f827cdbd221a3e5f2c8a24ff) to help readers differentiate between Miguel's original work, and the effort shown here to utilize *LibreTranslate*.  See `app/translate.py` for this original effort.
 
 # Elasticsearch
-[Chapter 16](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-full-text-search) is about [*Elasticsearch*](https://www.elastic.co).  The easiest way to get an *Elasticsearch* instance running is to [start a second *Docker* container](https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html) using [the official *Elasticsearch* image](https://hub.docker.com/_/elasticsearch) with [**disabled security**](https://stackoverflow.com/a/47035057).  Disabling security on the *Elasticsearch* side is necessary, or else the examples shown by Miguel will not work line-for-line.
+[Chapter 16](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-full-text-search) is about [*Elasticsearch*](https://www.elastic.co).  
+
+The easiest way to get an *Elasticsearch* instance running is to [start a second *Docker* container](https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html) using [the official *Elasticsearch* image](https://hub.docker.com/_/elasticsearch) with [**disabled security**](https://stackoverflow.com/a/47035057).  Disabling security on the *Elasticsearch* side is necessary, or else the examples shown by Miguel will not work line-for-line.
 
 `docker run -d -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" elasticsearch:8.4.0`
 
-**Warning** From *Docker Hub*, the *Elasticsearch* image must be *pulled* using an exact *version tag* such as `elasticsearch:8.4.0`. 
+**Warning** From *Docker Hub*, the *Elasticsearch* image [must be *pulled* using an exact *version tag*](https://github.com/elastic/elasticsearch-docker/issues/215#issuecomment-439319831) such as `elasticsearch:8.4.0`. 
 
 **Note** The above `docker run` command does not enable port-forwarding for port `9300` because this is a small development effort utilizing a single *Elasticsearch* node -- *Elasticsearch* serves users on port `9200`. 
 
