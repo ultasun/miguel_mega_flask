@@ -1,47 +1,21 @@
-2022-09-05 01:23:21,268 ERROR: Exception on /explore [GET] [in /usr/lib/python3.10/site-packages/flask/app.py:1455
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/site-packages/flask/app.py", line 2077, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1525, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1523, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1509, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/usr/local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/src/app/routes.py", line 56, in explore
-    return render_template('index.html', title=_('Explore'), posts=posts.items,
-  File "/usr/lib/python3.10/site-packages/flask/templating.py", line 148, in render_template
-    return _render(
-  File "/usr/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
-    rv = template.render(context)
-  File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 1291, in render
-    self.environment.handle_exception()
-  File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/src/app/templates/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/src/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
-    {% block body -%}
-  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
-    {% block content -%}
-  File "/src/app/templates/base.html", line 62, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "/src/app/templates/index.html", line 11, in block 'app_content'
-    {% include '_post.html' %}
-  File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/src/app/templates/_post.html", line 14, in template
-    {{ _('%(username)s says %(when)s', username=user_link, when=moment(post.timestamp).fromNow()) }}
-jinja2.exceptions.TemplateSyntaxError: expected token ',', got 's'
-2022-09-05 01:23:22,774 ERROR: Exception on /index [GET] [in /usr/lib/python3.10/site-packages/flask/app.py:1455
+2022-09-02 08:58:59,703 INFO: Microblog startup [in /src/app/__init__.py:47
+2022-09-02 09:00:08,361 INFO: Microblog startup [in /src/app/__init__.py:47
+2022-09-02 09:00:38,117 INFO: Microblog startup [in /src/app/__init__.py:47
+2022-09-02 09:01:47,080 INFO: Microblog startup [in /src/app/__init__.py:47
+2022-09-02 09:02:04,489 INFO: Microblog startup [in /src/app/__init__.py:47
+2022-09-04 00:10:30,653 INFO: Microblog startup [in /src/app/__init__.py:49
+2022-09-04 00:14:00,863 INFO: Microblog startup [in /src/app/__init__.py:49
+2022-09-04 00:38:54,691 INFO: Microblog startup [in /src/app/__init__.py:52
+2022-09-04 00:38:58,971 INFO: Microblog startup [in /src/app/__init__.py:52
+2022-09-04 03:16:27,276 INFO: Microblog startup [in /src/app/__init__.py:52
+2022-09-04 03:39:45,708 INFO: Microblog startup [in /src/app/__init__.py:52
+2022-09-04 16:44:11,039 INFO: Microblog startup [in /src/app/__init__.py:54
+2022-09-04 19:36:58,382 INFO: Microblog startup [in /src/app/__init__.py:56
+2022-09-04 19:39:03,421 INFO: Microblog startup [in /src/app/__init__.py:56
+2022-09-05 01:00:01,050 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:00:07,245 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:05:29,702 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:05:34,637 ERROR: Exception on /index [GET] [in /usr/lib/python3.10/site-packages/flask/app.py:1455
 Traceback (most recent call last):
   File "/usr/lib/python3.10/site-packages/flask/app.py", line 2077, in wsgi_app
     response = self.full_dispatch_request()
@@ -82,9 +56,10 @@ Traceback (most recent call last):
   File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
     raise rewrite_traceback_stack(source=source)
   File "/src/app/templates/_post.html", line 14, in template
-    {{ _('%(username)s says %(when)s', username=user_link, when=moment(post.timestamp).fromNow()) }}
-jinja2.exceptions.TemplateSyntaxError: expected token ',', got 's'
-2022-09-05 01:23:37,467 ERROR: Exception on /index [GET] [in /usr/lib/python3.10/site-packages/flask/app.py:1455
+    {{ _('%username)s says %(when)s',
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 's'
+2022-09-05 01:06:14,913 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:06:18,756 ERROR: Exception on /index [GET] [in /usr/lib/python3.10/site-packages/flask/app.py:1455
 Traceback (most recent call last):
   File "/usr/lib/python3.10/site-packages/flask/app.py", line 2077, in wsgi_app
     response = self.full_dispatch_request()
@@ -125,21 +100,53 @@ Traceback (most recent call last):
   File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
     raise rewrite_traceback_stack(source=source)
   File "/src/app/templates/_post.html", line 14, in template
-    {{ _('%(username)s says %(when)s', username=user_link, when=moment(post.timestamp).fromNow()) }}
-jinja2.exceptions.TemplateSyntaxError: expected token ',', got 's'
-2022-09-05 01:26:33,925 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 01:27:33,302 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 01:27:35,249 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 01:29:42,293 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 01:30:59,284 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 01:31:02,906 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 01:31:23,708 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 14:11:54,614 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 14:12:01,815 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 14:22:49,826 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 15:01:21,557 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 15:05:43,719 ERROR: The text to translate had confused the LibreTranslate service. [in /src/app/translate.py:44
-2022-09-05 15:05:43,724 ERROR: Error 400 when utilizing the LibreTranslation service. [in /src/app/translate.py:47
-2022-09-05 15:29:45,262 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 15:30:28,037 INFO: Microblog startup [in /src/app/__init__.py:59
-2022-09-05 15:33:52,666 INFO: Microblog startup [in /src/app/__init__.py:59
+    {{ _('%username)s says %(when)s', \
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 's'
+2022-09-05 01:07:11,621 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:08:52,313 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:13:26,954 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:13:30,388 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:13:35,762 INFO: Microblog startup [in /src/app/__init__.py:59
+2022-09-05 01:13:39,614 ERROR: Exception on /index [GET] [in /usr/lib/python3.10/site-packages/flask/app.py:1455
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/usr/local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/src/app/routes.py", line 41, in index
+    return render_template('index.html', title=_('Microblog Home'),
+  File "/usr/lib/python3.10/site-packages/flask/templating.py", line 148, in render_template
+    return _render(
+  File "/usr/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/src/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/src/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/usr/local/lib/python3.10/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block 'body'
+    {% block content -%}
+  File "/src/app/templates/base.html", line 62, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "/src/app/templates/index.html", line 11, in block 'app_content'
+    {% include '_post.html' %}
+  File "/usr/lib/python3.10/site-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/src/app/templates/_post.html", line 14, in template
+    {{ _('(%username)s says %(when)s', \
+jinja2.exceptions.TemplateSyntaxError: unexpected '%'

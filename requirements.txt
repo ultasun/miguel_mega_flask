@@ -24,3 +24,5 @@ flask-moment
 flask-babel
 requests
 langdetect
+elasticsearch == 8.4.0
+

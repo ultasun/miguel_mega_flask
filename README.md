@@ -10,6 +10,8 @@ There is a hand-writen `requirements.txt` file, however, two of the requirements
 
 Please read the *Configuration* section regarding the mandatory `.env` file.  Failure to set the `.env` file may result in crashes and unexpected behavior.
 
+Setting up an *Elasticsearch* node will be necessary for proper site functionality, please read the *Elasticsearch* section below.
+
 # Configuration
 This is the order of files which should be checked by *the user* for setting various configuration options:
 1. `.flaskenv` (check and set here **first**)
@@ -82,6 +84,20 @@ The system has the ability to detect which language the user submitted posts in,
 Miguel's tutorial is a little dated (it's from 2017), and it has the reader use the translation service from either *Google* or *Microsoft* during [Chapter 14](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax).  
 
 A free alternative [*LibreTranslate*](https://libretranslate.com/) is available.  The [`app/translate.py`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/translate.py) was [added on a separate commit](https://github.com/ultasun/miguel_mega_flask/commit/84f92299301743c7f827cdbd221a3e5f2c8a24ff) to help readers differentiate between Miguel's original work, and the effort shown here to utilize *LibreTranslate*.  See `app/translate.py` for this original effort.
+
+# Elasticsearch
+[Chapter 16](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-full-text-search) is about [*Elasticsearch*](https://www.elastic.co).  The easiest way to get an *Elasticsearch* instance running is to [start a second *Docker* container](https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html) using [the official *Elasticsearch* image](https://hub.docker.com/_/elasticsearch) with [**disabled security**](https://stackoverflow.com/a/47035057).  Disabling security on the *Elasticsearch* side is necessary, or else the examples shown by Miguel will not work line-for-line.
+
+`docker run -d -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" elasticsearch:8.4.0`
+
+**Warning** From *Docker Hub*, the *Elasticsearch* image must be *pulled* using an exact *version tag* such as `elasticsearch:8.4.0`. 
+
+**Note** The above `docker run` command does not enable port-forwarding for port `9300` because this is a small development effort utilizing a single *Elasticsearch* node -- *Elasticsearch* serves users on port `9200`. 
+
+**Note** The `requirements.txt` file utilizes [an exact version](https://pypi.org/project/elasticsearch/8.4.0/) (`8.4.0`)), as does [the above `docker run` statement](https://hub.docker.com/layers/library/elasticsearch/8.4.0/images/sha256-f919f9d97aa008faad8669135357bd5de5c3f59cc42c410027f3b18c8adf0419) (`8.4.0`).
+
+### Disabling Elasticsearch
+For unit testing and development purposes, it may be appropriate to disable *Elasticsearch*.  In order to do this, disable one of the environment variables in the `.env` file.  If `config.py` detects that any of the three related environment variables are disabled (`None`) then *Microblog* will disable *Elasticsearch*.
 
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found.  The `LICENSE` file included in this repository is an exact copy of the one [Miguel had distributed here](https://raw.githubusercontent.com/miguelgrinberg/microblog/v0.13/LICENSE).
