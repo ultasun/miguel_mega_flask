@@ -10,7 +10,7 @@ Thanks to *Docker*, this document will not cover the traditional strategy of usi
 # Installation
 There is a hand-writen `requirements.txt` file, however, two of the requirements had been commented out (`flask-sqlalchemy` and `flask-migrate`), and were instead installed from the *Alpine* *Testing* repository.  This was done in order to avoid installing an entire build environment (*GCC*) since the intention is to *Dockerize* Miguel's application after the final chapter of his tutorial.
 
-**Please uncomment** `flask-sqlalchemy` and `flask-migrate` if the build environment is available to properly install these packages.  Else, read the section below titled *Important Notes (flask-sqlalchemy, flask-migrate)*, particularly for *Alpine Linux* in a *Docker* container.
+**Please uncomment** `flask-sqlalchemy` and `flask-migrate` if the build environment is available to properly install these packages.  Else, read the section below titled [Important Notes regarding *flask-sqlalchemy* & *flask-migrate* on *Alpine Linux*](https://github.com/ultasun/miguel_mega_flask#important-notes-regarding-flask-sqlalchemy--flask-migrate-on-alpine-linux), particularly for when using *Alpine Linux* in a *Docker* container.
 
 Please read the *Configuration* section regarding the mandatory `.env` file.  Failure to set the `.env` file may result in crashes and unexpected behavior.
 
