@@ -60,3 +60,5 @@ class Config(object):
     else:
         ELASTICSEARCH_URL = None
 
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
+

@@ -19,6 +19,10 @@
                 <p><a href="{{ url_for('main.edit_profile')}}">
                     {{ _('Edit your profile') }}
                 </a></p>
+                {% if not current_user.get_task_in_progress('export_posts') %}
+                <p><a href="{{ url_for('main.export_posts') }}">
+                    {{ _('Export your post history') }}</a></p>
+                {% endif %}
                 {% elif not current_user.is_following(user) %}
                 <p>
                 {# TODO update this to use wtf.quick_form() #}

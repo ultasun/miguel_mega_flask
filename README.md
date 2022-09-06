@@ -16,6 +16,8 @@ Please read the *Configuration* section regarding the mandatory `.env` file.  Fa
 
 Setting up an *Elasticsearch* node will be necessary for proper site functionality, please read the *Elasticsearch* section below.
 
+Setting up a *Redis* node and an *RQ* server to process work submitted by the application server will be necessary, see the *RQ* section and [Chapter 22](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxii-background-jobs) for more details.
+
 Compiling all of the language translations for system messages and content will be necessary, and should be done as a final step before running the application server.
 
 `flask translate compile`
@@ -79,7 +81,8 @@ Part of Miguel's tutorial is adding sub-commands to the `flask` command, they ca
 ### After Installation
 After checking out this repository, and after installing all `pip` dependencies, a final step before launching the application server for the first time, is:
 
-`flask translate compile`
+- `flask translate compile`
+- `flask db upgrade`
 
 ### Adding a new system language
 This procedure is only necessary to have the system pages generate system messages in a language other than *English*.  That is, this has nothing to do with which languages users may compose their posts in.
@@ -156,6 +159,17 @@ and their privileges to be set,
 and flushed
 `FLUSH PRIVILEGES;`
 Then, `flask db upgrade` will be able to create the tables.
+
+# RQ
+Chapter 22 is about using [*Redis*](https://redis.io) and [*RQ*](https://python-rq.org).
+
+Using docker, the `rq` commands shown by Miguel will likely fail, because the *Redis* instance is likely running in a separate container from the *Python* environment.
+
+Here is an example of using *RQ* from the command line with a specific server
+`rq worker microblog-tasks --url redis://192.168.1.13:6379/0`
+
+Starting `Queue` objects with a specific *URL* is self-explanatory following Miguel's tutorial:
+`Redis.from_url('redis://192.168.1.13:6379/0')`
 
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found -- in particular the exact usability of environment variables defined in `.env` (and `.env.example`). 

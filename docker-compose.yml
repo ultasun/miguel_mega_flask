@@ -8,4 +8,9 @@
 # 	bind mount for init scripts
 # 	named mount for /var/lib data
 # A container for LibreTranslate ? 
+# A container for Redis
+# A container for rq worker
+#	this container uses the same image as microblog, but instead of 
+# 	starting gunicorn, it starts rq worker, because the environment
+# 	variables told it to
 
