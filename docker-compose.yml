@@ -1,0 +1,11 @@
+# TODO actually write this file
+# A container for Microblog
+# 	bind mount to .env 
+#	boot script to start gunicorn 
+# A container for Elasticsearch 
+#	named mount for wherever Elasticsearch keeps data
+# A container for MySQL
+# 	bind mount for init scripts
+# 	named mount for /var/lib data
+# A container for LibreTranslate ? 
+
