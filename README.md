@@ -1,7 +1,11 @@
 # Miguel's Mega Flask Tutorial
 See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).  The goal of this repository is to provide notes for the maintainer of this repository, and, to provide Miguel's *Microblog* application as a *Docker* image (or at least, a working `Dockerfile`, available in this repository.)
 
-As of now, the maintainer of this repository had completed at least *Chapter 21*.
+As of now, the maintainer of this repository had completed at least *Chapter 22*.
+
+As of now, the `Dockerfile` is not prepared and either is `docker-compose.yml`.
+
+The maintainer of this repository does not plan to use *Heroku*, so the `Procfile` does not and will not exist.
 
 The strategy used here does not use *venv* or any other *Python* virtualization environment system, because *Docker* containerization is used instead.  Setting up *venv* inside of a *Docker* container seems like fixing the same problem twice, and would otherwise complicate the setup needlessly.
 
