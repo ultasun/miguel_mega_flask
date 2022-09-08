@@ -3,13 +3,19 @@ See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-fla
 
 As of now, the maintainer of this repository had completed at least *Chapter 22*.
 
-As of now, the `Dockerfile` is not prepared and either is `docker-compose.yml`.
+As of now, the `Dockerfile` is not prepared and neither is `docker-compose.yml`.  Miguel did not cover any [*orchestration techniques*](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/What-is-Kubernetes-vs-Docker-Compose-How-these-DevOps-tools-compare), so that will be a special treat found in this repository.
 
 The maintainer of this repository does not plan to use *Heroku*, so the `Procfile` does not and will not exist.
 
 The strategy used here does not use *venv* or any other *Python* virtualization environment system, because *Docker* containerization is used instead.  Setting up *venv* inside of a *Docker* container seems like fixing the same problem twice, and would otherwise complicate the setup needlessly.
 
 Thanks to *Docker*, this document will not cover the traditional strategy of using *venv* or any other *Python* virtualization environment solution.
+
+# Extensions from Miguel's work
+This repository has a few extensions/modifications from Miguel's original tutorial:
+1. The user-content translation feature uses *LibreTranslate* instead of the not-so-free *Microsoft* or *Google* translation API's
+2. While Miguel did cover creating a *Docker* image of *Microblog*, he did not cover *orchestration* of a full-stack setup.  This repository will offer a `docker-compose.yml` file, and users will be able to `docker compose up` the entire system with one command.
+3. The end of *Chapter 23* leaves implementing the remaining endpoints of the RESTful API as a reader exercise -- it will be done here.
 
 # Installation
 There is a hand-writen `requirements.txt` file, however, two of the requirements had been commented out (`flask-sqlalchemy` and `flask-migrate`), and were instead installed from the *Alpine* *Testing* repository.  This was done in order to avoid installing an entire build environment (*GCC*) since the intention is to *Dockerize* Miguel's application after the final chapter of his tutorial.
