@@ -26,4 +26,5 @@ requests
 langdetect
 elasticsearch == 8.4.0
 rq
+flask-httpauth
 
