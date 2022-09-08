@@ -1,7 +1,7 @@
 # Miguel's Mega Flask Tutorial
 See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).  The goal of this repository is to provide notes for the maintainer of this repository, and, to provide Miguel's *Microblog* application as a *Docker* image (or at least, a working `Dockerfile`, available in this repository.)
 
-As of now, the maintainer of this repository had completed at least *Chapter 22*.
+As of now, the maintainer of this repository had completed *Chapter 23*.
 
 As of now, the `Dockerfile` is not prepared and neither is `docker-compose.yml`.  Miguel did not cover any [*orchestration techniques*](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/What-is-Kubernetes-vs-Docker-Compose-How-these-DevOps-tools-compare), so that will be a special treat found in this repository.
 
