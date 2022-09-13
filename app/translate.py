@@ -34,7 +34,7 @@ def translate(text, source_language, dest_language):
         requestDict['api_key'] = current_app.config['LIBRETRANSLATE_API_KEY']
 
     r = requests.post( \
-        'https://' + current_app.config['LIBRETRANSLATE_MIRROR'] + '/translate',
+        current_app.config['LIBRETRANSLATE_MIRROR'] + '/translate',
         json=requestDict)
 
     if r.status_code == 403:

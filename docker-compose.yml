@@ -1,18 +1,11 @@
 # A docker compose file for Miguel's microblog demo system.
 # Remember to set the .env file, see the README.md and .env.example
-#
-# Two security considerations:
-# 1) All ports for all services are exposed to the outside for dev purposes
-# 1a) Only Microblog to port 5000 needs to be exposed in production
-# 2) MySQL root password is set for development reasons
-
-#version "3.8"
 
 services:
   mysql:
     image: mysql:latest
-    ports:
-      - '3306:3306'
+#    ports:
+#      - 3306:3306
     volumes:
       - microblog-sql-data:/var/lib/mysql
       - "./init-microblog.sql:/docker-entrypoint-initdb.d/1.sql"
@@ -21,16 +14,16 @@ services:
 
   redis:
     image: redis:latest
-    ports:
-      - '6379:6379'
+#    ports:
+#      - 6379:6379
     volumes:
       - microblog-redis-data:/data
 
   # :latest tag doesn't exist for elasticsearch...must specify a version
   elasticsearch:
     image: elasticsearch:8.4.0
-    ports:
-      - '9200:9200'
+#    ports:
+#      - 9200:9200
     volumes:
       - microblog-elasticsearch-data:/usr/share/elasticsearch/data
     environment:
@@ -39,8 +32,11 @@ services:
 
   libretranslate:
     image: libretranslate/libretranslate:latest
-    ports:
-      - '81:5000'
+#    ports:
+#      - 81:81
+    environment:
+      - LT_PORT=81
+      - LT_HOST=0.0.0.0
 
   microblog:
     image: microblog
@@ -60,7 +56,6 @@ services:
       - "redis"
     environment:
       - MICROBLOG_RQ_WORKER_MODE=yes
-      - REDIS_URL=redis://redis:6379/0
     volumes:
       - "./.env:/app/.env"
     
