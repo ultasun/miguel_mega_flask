@@ -30,7 +30,7 @@ The [maintainer of this repository](https://github.com/ultasun) had expanded on 
    - For example, [http://localhost/](http://localhost/)
 
 # More information
-There is an [original `README.old.md`](https://github.com/ultasun/miguel_mega_flask/blob/master/README.old.md) which was used by the maintainer of this repository while following Miguel's tutorial.  That `README.old.md` has notes which, ultimately, have been translated into the [`run.sh`](https://github.com/ultasun/miguel_mega_flask/blob/master/run.sh), [`Dockerfile`](https://github.com/ultasun/miguel_mega_flask/blob/master/Dockerfile), [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml), and more.
+There is an [original `README.old.md`](https://github.com/ultasun/miguel_mega_flask/blob/master/README.old.md) which was used by the maintainer of this repository while following Miguel's tutorial.  That [`README.old.md`](https://github.com/ultasun/miguel_mega_flask/blob/master/README.old.md) has notes which, ultimately, have been translated into the [`run.sh`](https://github.com/ultasun/miguel_mega_flask/blob/master/run.sh), [`Dockerfile`](https://github.com/ultasun/miguel_mega_flask/blob/master/Dockerfile), [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml), and more.
 
 # Credits
 The original tutorial was written by [*Miguel Grinberg*](https://blog.miguelgrinberg.com).  All the code in this repository was physically typed on a keyboard by [*ultasun*](https://github.com/ultasun) while following *Miguel's* tutorial.
