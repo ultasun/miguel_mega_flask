@@ -6,6 +6,8 @@ His system has the reader utilize much more, including [*Elasticsearch*](https:/
 
 The system is called *Microblog*.
 
+
+# Improvements from the original *Microblog*
 The [maintainer of this repository](https://github.com/ultasun) had expanded on Miguel's excellent work:
 1. [This *Microblog*](https://github.com/ultasun/miguel_mega_flask/blob/master/app/translate.py) will use [*LibreTranslate*](https://github.com/LibreTranslate/LibreTranslate) to provide translation services to users.
    - This *Microblog* has all translation queries served internally.
