@@ -16,10 +16,14 @@ services:
 #      - 3306:3306
     volumes:
       - microblog-sql-data:/var/lib/mysql
-      - "./init-microblog.sql:/docker-entrypoint-initdb.d/1.sql"
+#      - "./init-microblog.sql:/docker-entrypoint-initdb.d/1.sql"
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
 #      - MYSQL_ROOT_PASSWORD=m1crob10g
+      - MYSQL_ONETIME_PASSWORD=yes
+      - MYSQL_USER=microblog
+      - MYSQL_PASSWORD=micR0-blog-miguel
+      - MYSQL_DATABASE=microblog
 
   redis:
     image: redis:latest

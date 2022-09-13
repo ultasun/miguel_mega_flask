@@ -4,3 +4,5 @@ __pycache__/
 messages.pot
 logs/
 *~
+**/*.DS_Store
+

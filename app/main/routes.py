@@ -19,6 +19,10 @@ def before_request():
         g.search_form = SearchForm()
     g.locale = str(get_locale())
 
+@bp.route('/favicon.ico')
+def favicon():
+    return redirect(url_for('static', filename='favicon.ico'))
+
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
 @login_required

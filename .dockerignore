@@ -5,4 +5,5 @@ messages.pot
 logs/
 .git/
 *~
+**/*.DS_Store
 
