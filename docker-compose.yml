@@ -1,5 +1,13 @@
-# A docker compose file for Miguel's microblog demo system.
+# A docker compose file for Miguel Grinberg's Microblog demo system.
+# 
 # Remember to set the .env file, see the README.md and .env.example
+# No need to load the .env file during the `docker compose up` command.
+
+# - Run Notes -----------------------------------------
+#
+# To run, `cd` into the directory containing the `docker-compose.yml` file,
+# and:
+# 1) `docker compose up`
 
 services:
   mysql:
@@ -10,7 +18,8 @@ services:
       - microblog-sql-data:/var/lib/mysql
       - "./init-microblog.sql:/docker-entrypoint-initdb.d/1.sql"
     environment:
-      - MYSQL_ROOT_PASSWORD=m1crob10g
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+#      - MYSQL_ROOT_PASSWORD=m1crob10g
 
   redis:
     image: redis:latest
@@ -39,7 +48,7 @@ services:
       - LT_HOST=0.0.0.0
 
   microblog:
-    image: microblog
+    image: ultasun/microblog:latest
     depends_on:
       - "libretranslate"
       - "mysql"
@@ -51,7 +60,7 @@ services:
       - "./.env:/app/.env"
 
   microblog-rq:
-    image: microblog
+    image: ultasun/microblog:latest
     depends_on:
       - "redis"
     environment:
