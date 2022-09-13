@@ -17,8 +17,8 @@ The [maintainer of this repository](https://github.com/ultasun) had expanded on 
 
 # Installation
 1. Install [*Docker*](https://www.docker.com/), [*Docker Desktop*](https://www.docker.com/products/docker-desktop/) or [*Podman*](https://podman.io),
-2. Download [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml),
-3. Download [`.env.example`](https://github.com/ultasun/miguel_mega_flask/blob/master/.env.example),
+2. Download [`docker-compose.yml`](https://raw.githubusercontent.com/ultasun/miguel_mega_flask/master/docker-compose.yml),
+3. Download [`.env.example`](https://raw.githubusercontent.com/ultasun/miguel_mega_flask/master/.env.example),
    - Rename it to `.env`, and then,
    - Place it into the same directory as `docker-compose.yml`,
 4. Using a terminal, `cd` to the directory containing both `docker-compose.yml` and `.env`, and run:
