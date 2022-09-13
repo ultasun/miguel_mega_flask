@@ -181,6 +181,15 @@ Here is an example of using *RQ* from the command line with a specific server
 Starting `Queue` objects with a specific *URL* is self-explanatory following Miguel's tutorial:
 `Redis.from_url('redis://192.168.1.13:6379/0')`
 
+# Docker part 1 of 2: Building Microblog Image
+
+1. Using your terminal, `cd` into the cloned repository and run
+`docker build -t microblog .`
+
+2. Run the container ***your* `.env` file must be specified as a [*bind mount*](https://docs.docker.com/storage/bind-mounts/), see [.env.example]() for a template of this file.  
+
+# Docker part 2 of 2: Orchestration with [*Docker Compose*](https://docs.docker.com/compose/)
+
 # Credits
 Again, this is Miguel's Mega Flask Tutorial.  Some variation between [his original demonstrations](https://github.com/miguelgrinberg/microblog) and my following-along will be found -- in particular the exact usability of environment variables defined in `.env` (and `.env.example`). 
 
