@@ -11,12 +11,14 @@ The [maintainer of this repository](https://github.com/ultasun) had expanded on 
    - This *Microblog* has all translation queries served internally.
    - Miguel's original tutorial has the reader [use an external translation API](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax/page/4)
 2. This *Microblog* provides a stand-alone [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml), which allows for easy deployment of the full stack system.
-   - The only other file needed by users to bring up *Microblog* is a configuration file.
+   - The only other file needed by users to bring up *Microblog* is a [configuration file](https://github.com/ultasun/miguel_mega_flask/blob/master/.env.example).
 
 # Installation
 1. Install [*Docker*](https://www.docker.com/), [*Docker Desktop*](https://www.docker.com/products/docker-desktop/) or [*Podman*](https://podman.io),
 2. Download [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml),
-3. Download [`.env.example`](https://github.com/ultasun/miguel_mega_flask/blob/master/.env.example), rename it to [`.env`], and place it into the same directory as `docker-compose.yml`,
+3. Download [`.env.example`](https://github.com/ultasun/miguel_mega_flask/blob/master/.env.example),
+   - Rename it to `.env`, and then,
+   - Place it into the same directory as `docker-compose.yml`,
 4. Using a terminal, `cd` to the directory containing both `docker-compose.yml` and `.env`, and run:
    - `docker compose up`
 5. **Wait about 15 minutes** (or longer) for:
