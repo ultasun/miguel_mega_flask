@@ -1,16 +1,72 @@
-# TODO actually write this file
-# A container for Microblog
-# 	bind mount to .env 
-#	boot script to start gunicorn 
-# A container for Elasticsearch 
-#	named mount for wherever Elasticsearch keeps data
-# A container for MySQL
-# 	bind mount for init scripts
-# 	named mount for /var/lib data
-# A container for LibreTranslate ? 
-# A container for Redis
-# A container for rq worker
-#	this container uses the same image as microblog, but instead of 
-# 	starting gunicorn, it starts rq worker, because the environment
-# 	variables told it to
+# A docker compose file for Miguel's microblog demo system.
+# Remember to set the .env file, see the README.md and .env.example
+#
+# Two security considerations:
+# 1) All ports for all services are exposed to the outside for dev purposes
+# 1a) Only Microblog to port 5000 needs to be exposed in production
+# 2) MySQL root password is set for development reasons
 
+#version "3.8"
+
+services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    volumes:
+      - microblog-sql-data:/var/lib/mysql
+      - "./init-microblog.sql:/docker-entrypoint-initdb.d/1.sql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=m1crob10g
+
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    volumes:
+      - microblog-redis-data:/data
+
+  # :latest tag doesn't exist for elasticsearch...must specify a version
+  elasticsearch:
+    image: elasticsearch:8.4.0
+    ports:
+      - '9200:9200'
+    volumes:
+      - microblog-elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    ports:
+      - '81:5000'
+
+  microblog:
+    image: microblog
+    depends_on:
+      - "libretranslate"
+      - "mysql"
+      - "elasticsearch"
+      - "redis"
+    ports:
+      - 80:5000
+    volumes:
+      - "./.env:/app/.env"
+
+  microblog-rq:
+    image: microblog
+    depends_on:
+      - "redis"
+    environment:
+      - MICROBLOG_RQ_WORKER_MODE=yes
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - "./.env:/app/.env"
+    
+volumes:
+  microblog-sql-data:
+  microblog-redis-data:
+  microblog-elasticsearch-data:
+
+    

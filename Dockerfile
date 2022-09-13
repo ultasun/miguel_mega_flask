@@ -17,7 +17,7 @@
 # testing for python version 3.10.  this may change in the future.
 FROM python:3.10-alpine3.16
 RUN apk -U upgrade
-RUN apk add py3-flask-sqlalchemy py3-flask-migrate --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
+RUN apk add py3-mysqlclient py3-flask-sqlalchemy py3-flask-migrate --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/
 # pip will install to /usr/local, but apk will install the two above to /usr
 ENV PYTHONPATH=/usr/lib/python3.10/site-packages:/usr/local/lib/python3.10/site-packages
 

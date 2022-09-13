@@ -28,3 +28,5 @@ elasticsearch == 8.4.0
 rq
 flask-httpauth
 gunicorn
+cryptography
+#MySQL-python
