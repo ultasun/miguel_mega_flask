@@ -1,7 +1,7 @@
 # Miguel's Mega Flask Tutorial
 See the tutorial on his blog [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).  
 
-**As of now, the maintainer of this repository had completed all 23 chapters of Miguel's Mega Flask tutorial.**
+**As of now, the maintainer of this repository had completed all 23 chapters of Miguel's Mega Flask tutorial.**  The homework in Chapter 23 has yet to be completed.
 
 The goal of this repository is to provide notes for the maintainer of this repository, to learn [*Flask*](https://flask.palletsprojects.com/en/2.2.x/), and, to provide a demonstration of how Miguel's *Microblog* can be deployed as a *docker-compose.yml* orchestration (which considerably decreases the complexity of developing and deploying *Microblog*).
 
