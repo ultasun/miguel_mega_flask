@@ -2,7 +2,7 @@
 
 *Miguel Grinberg* had [wrote an excellent tutorial series](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) on developing a full stack web application system using the [*Flask*](https://flask.palletsprojects.com/en/2.2.x/) framework.
 
-His system has the reader utilize much more, including [*Elasticsearch*](https://www.elastic.co/), [*Redis*](https://redis.io), [*RQ*](https://python-rq.org) and [*SQLAlchemy*](https://flask-sqlalchemy.palletsprojects.com).
+His system has the reader learn and utilize several components, including [*Elasticsearch*](https://www.elastic.co/), [*Redis*](https://redis.io), [*RQ*](https://python-rq.org) and [*SQLAlchemy*](https://flask-sqlalchemy.palletsprojects.com).
 
 The system is called *Microblog*.
 
