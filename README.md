@@ -14,6 +14,8 @@ The [maintainer of this repository](https://github.com/ultasun) had expanded on 
    - Miguel's original tutorial has the reader [use an external translation API](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax/page/4)
 2. This *Microblog* provides a stand-alone [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml), which allows for easy deployment of the full stack system.
    - The only other file needed by users to bring up *Microblog* is a [configuration file](https://github.com/ultasun/miguel_mega_flask/blob/master/.env.example).
+3. [Chapter 23](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxiii-application-programming-interfaces-apis) is about adding a [*RESTful API*](https://en.wikipedia.org/wiki/Representational_state_transfer) to *Microblog*, but *Miguel* only shows the implementation for *Users*, and he leaves the remaining endpoints as an exercise for the reader.  The following additional endpoints have been implemented here:
+   - [`/api/posts`](https://github.com/ultasun/miguel_mega_flask/commit/f2407c134493c56224bbe5a2eedd645672ea6a60): read one post, read all posts, publish new post.
 
 # Installation
 1. Install [*Docker*](https://www.docker.com/), [*Docker Desktop*](https://www.docker.com/products/docker-desktop/) or [*Podman*](https://podman.io),
