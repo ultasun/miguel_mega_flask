@@ -265,13 +265,34 @@ class Post(SearchableMixin, PaginatedAPIMixin, db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
-class Message(db.Model):
+class Message(PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
+    # the next set of methods are used by the API blueprint
+    # they are (probably) not used by the main (HTML-serving) blueprint
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'sender_id': self.sender_id,
+            'recipient_id': self.recipient_id,
+            'body': self.body,
+            'timestamp': self.timestamp,
+            '_links': {
+                'self': url_for('api.get_message', id=self.id)
+            }
+        }
+        
+        return data
+        
+    def from_dict(self, data):
+        for field in ['sender_id', 'recipient_id', 'body']:
+            if field in data:
+                setattr(self, field, data[field])
+    
     def __repr__(self):
         return '<Message {}>'.format(self.body)
 
