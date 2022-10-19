@@ -9,25 +9,39 @@ from app.api.errors import bad_request
 @token_auth.login_required
 def get_message(id):
     """
-    Need to enforce only allowing the intended sender/recipient accessing the
-    message.
+    Preliminary.  Users who are the sender or the recipient may access a
+    message by the id.
     """
-    return jsonify(Message.query.get_or_404(id).to_dict())
+    the_message = Message.query.get_or_404(id)
+    
+    if token_auth.current_user().id == the_message.sender_id or \
+       token_auth.current_user().id == the_message.recipient_id:
+        return jsonify(Message.query.get_or_404(id).to_dict())
+    else:
+        abort(403)
 
 @bp.route('/messages', methods=['GET'])
 @token_auth.login_required
 def get_messages():
     """
-    This needs to be modified to only return the messages for the logged in user
+    Preliminary.  Return all the messages where the logged in user is either the
+    recipient or the sender.
     """
     page = request.args.get('page', 1, type=int)
     per_page = min(request.args.get('per_page', 10, type=int), 100)
-    data = Message.to_collection_dict(Message.query, page, per_page, 'api.get_messages')
+    data = Message.to_collection_dict(
+        Message.query.filter(
+            (Message.recipient_id==token_auth.current_user().id) |
+            (Message.sender_id==token_auth.current_user().id)),
+        page, per_page, 'api.get_messages')
     return jsonify(data)
 
 @bp.route('/messages', methods=['POST'])
 @token_auth.login_required
 def create_message():
+    """
+    Allows a logged in user to send a message.
+    """
     data = request.get_json() or {}
     if 'body' not in data \
        or 'sender_id' not in data or 'recipient_id' not in data:
