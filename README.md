@@ -31,6 +31,22 @@ The [maintainer of this repository](https://github.com/ultasun) had expanded on 
 6. Using a web browser, access the service on standard *HTTP* port `80`!
    - For example, [http://localhost/](http://localhost/)
 
+### Development Mode
+In order to get into a *development mode*, adjust the `docker-compose.yml` file accordingly:
+1. Under `services:` \ `microblog:` \ `volumes:`, change the *bind-mount* to use the entire directory.
+- Example:
+```
+#      - "./.env:/app/.env"
+      - "./:/app"
+```
+2. Under `services:` \ `microblog-rq:` \ `volumes:`, change the *bind-mount* to use the entire directory.
+- Example:
+```
+#      - "./.env:/app/.env"
+      - "./:/app"
+```
+3. Start-up *Docker compose* as usual.  Note that changes made to the source code will require the specific affected container to be restarted.
+
 # More information
 There is an [original `README.old.md`](https://github.com/ultasun/miguel_mega_flask/blob/master/README.old.md) which was used by the maintainer of this repository while following Miguel's tutorial.  That [`README.old.md`](https://github.com/ultasun/miguel_mega_flask/blob/master/README.old.md) has notes which, ultimately, have been translated into the [`run.sh`](https://github.com/ultasun/miguel_mega_flask/blob/master/run.sh), [`Dockerfile`](https://github.com/ultasun/miguel_mega_flask/blob/master/Dockerfile), [`docker-compose.yml`](https://github.com/ultasun/miguel_mega_flask/blob/master/docker-compose.yml), and more.
 
