@@ -296,7 +296,7 @@ class Message(PaginatedAPIMixin, db.Model):
     def __repr__(self):
         return '<Message {}>'.format(self.body)
 
-class Notification(db.Model):
+class Notification(PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -305,6 +305,25 @@ class Notification(db.Model):
 
     def get_data(self):
         return json.loads(str(self.payload_json))
+
+    # the next method is used by the API blueprint
+    # they are (probably) not used by teh main (HTML-serving) blueprint
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+            'user_id': self.user_id,
+            'timestamp': self.timestamp,
+            'payload_json': self.payload_json,
+            '_links': {
+                'self': url_for('api.get_notification', id=self.id)
+            }
+        }
+
+        return data
+
+    # there is no need for a from_dict method because the api does not
+    # accept clients to POST new notifications.
 
 class Task(db.Model):
     id = db.Column(db.String(36), primary_key=True)
