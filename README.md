@@ -6,7 +6,6 @@ His system has the reader learn and utilize several components, including [*Elas
 
 The system is called *Microblog*.
 
-
 # Improvements from the original *Microblog*
 The [maintainer of this repository](https://github.com/ultasun) had expanded on Miguel's excellent work:
 1. [This *Microblog*](https://github.com/ultasun/miguel_mega_flask/blob/master/app/translate.py) will use [*LibreTranslate*](https://github.com/LibreTranslate/LibreTranslate) to provide translation services to users.
@@ -18,6 +17,7 @@ The [maintainer of this repository](https://github.com/ultasun) had expanded on 
    - [`/api/posts`](https://github.com/ultasun/miguel_mega_flask/commit/f2407c134493c56224bbe5a2eedd645672ea6a60): read one post, read all posts, publish new post.
    - [`/api/messages`](https://github.com/ultasun/miguel_mega_flask/commit/787f4077a64279f05010a19cf5d0210ba4c36332): read one message, read all messages, send new message -- authentication/authorization enabled so that users may only see messages to or from them.
    - [`/api/notifications`](https://github.com/ultasun/miguel_mega_flask/commit/079d18e99a1089bd576375f88407c0999effd56d): read one notification, read all notifications -- authentication/authorization enabled so that users may only see notifications for them, and no `POST` method is defined because there's no need for a client to submit a notification.
+   - [`/api/tasks`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/api/tasks.py): read one task, read all tasks, submit new task -- authentication/authorization enabled so that users may only see tasks they own.  An error will be returned if a client submits the same task twice.  The method [`User.launch_task()`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/models.py#L120) is used, [just like on the HTML side in `routes.py`](https://github.com/ultasun/miguel_mega_flask/blob/master/app/main/routes.py#L220).
 
 # Installation
 1. Install [*Docker*](https://www.docker.com/), [*Docker Desktop*](https://www.docker.com/products/docker-desktop/) or [*Podman*](https://podman.io),
