@@ -325,7 +325,7 @@ class Notification(PaginatedAPIMixin, db.Model):
     # there is no need for a from_dict method because the api does not
     # accept clients to POST new notifications.
 
-class Task(db.Model):
+class Task(PaginatedAPIMixin, db.Model):
     id = db.Column(db.String(36), primary_key=True)
     name = db.Column(db.String(128), index=True)
     description = db.Column(db.String(128))
@@ -342,6 +342,30 @@ class Task(db.Model):
     def get_progress(self):
         job = self.get_rq_job()
         return job.meta.get('progress', 0) if job is not None else 100
+
+    # the next two methods are used by the API blueprint
+    # they are (probably) not used by the main (HTML-serving) blueprint
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'user_id': self.user_id,
+            'complete': self.complete,
+            '_links': {
+                'self': url_for('api.get_task', id=self.id)
+            }
+        }
+
+        return data
+
+    def from_dict(self, data):
+        for field in ['name', 'description', 'user_id']:
+            if field in data:
+                setattr(self, field, data[field])
+
+    def __repr__(self):
+        return '<Task {}>'.format(self.description)
 
 @login.user_loader
 def load_user(id):
